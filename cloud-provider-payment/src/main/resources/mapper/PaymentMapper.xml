@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lkf.springcloud.dao.PaymentDao">
+    <resultMap id="paymentBO" type="com.lkf.springcloud.bo.PaymentBO">
+        <id property="id" column="ID" jdbcType="BIGINT"/>
+        <result property="serial" column="SERIAL" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="create" parameterType="com.lkf.springcloud.bo.PaymentBO">
+		INSERT INTO PAYMENT
+		(SERIAL)
+		VALUES
+		(#{serial,jdbcType=VARCHAR})
+	</insert>
+
+    <select id="queryPaymentById" resultMap="paymentBO">
+		select ID,SERIAL from PAYMENT where ID = #{id,jdbcType=BIGINT}
+	</select>
+</mapper>
